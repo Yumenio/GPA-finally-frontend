@@ -16,6 +16,7 @@ const BankAccountsContainer: React.FC<BankAccountsContainerProps> = ({ accounts 
           key={index}
           accountNumber={account.account_number}
           currentBalance={account.current_balance}
+          accountId={account.ID}
         />
       ))}
     </Box>

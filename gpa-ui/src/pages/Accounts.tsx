@@ -4,6 +4,7 @@ import axios from 'axios';
 import BankAccountsContainer from '../components/BankAccountsContainer';
 
 export interface AccountData{
+    ID: number,
     account_number:string,
     current_balance:string,
 }
@@ -12,8 +13,10 @@ const Accounts = () => {
     const api_uri = "http://localhost:8000/api/accounts"
     const [data, setData] = useState<[AccountData]|null>();
 
+    const user_id = "6"
+
     const getData = () => {
-        axios(api_uri+"/user/6")
+        axios(api_uri+"/user/"+user_id)
         .then(response =>{
             setData(response.data)
         })

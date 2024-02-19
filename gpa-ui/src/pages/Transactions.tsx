@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { useParams } from 'react-router-dom';
 
-const Transactions = () => {
+const TransactionsPage: React.FC = () => {
+  const { accountId } = useParams<{ accountId: string }>();
+
   return (
-    <div>Transactions</div>
-  )
-}
+    <div>
+      <h2>Transactions for Account {accountId}</h2>
+    </div>
+  );
+};
 
-export default Transactions
+export default TransactionsPage;

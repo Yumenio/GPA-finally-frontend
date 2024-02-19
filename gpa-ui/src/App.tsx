@@ -19,7 +19,7 @@ function App() {
         <Route path="/login" element= {<Login setToken={setToken}/>}/>
         <Route path="/signup" element={<Register setToken={setToken}/>}/>
         <Route path="/accounts" element={<Accounts/>}/>
-        <Route path="/transactions" element={<Transactions/>}/>
+        <Route path="/transactions/:accountId" element={<Transactions/>}/>
       </Routes>
     </div>
   );
