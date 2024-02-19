@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 
-const Register = () => {
+const Register = ({setToken}:{setToken:Dispatch<SetStateAction<string>>}) => {
   return (
     <div>Register</div>
   )

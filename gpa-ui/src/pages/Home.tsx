@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Home = () => {
+const Home = ({token}:{token:string|null}) => {
   return (
     <div>Home</div>
   )
