@@ -1,4 +1,3 @@
-// BankAccountInfo.tsx
 import React from 'react';
 import { Card, CardContent, Link, Typography } from '@mui/material';
 import {Link as RouterLink} from 'react-router-dom';
@@ -16,7 +15,7 @@ const formatAccountNumber = (accountNumber:string): string =>{
 const BankAccountInfo: React.FC<BankAccountInfoProps> = ({ accountNumber, currentBalance, accountId }) => {
   const formattedAccountNumber = formatAccountNumber(accountNumber);
   return (
-    <Card variant="outlined" style={{ minWidth: '200px', margin: '10px', textAlign: 'left' }}>
+    <Card variant="outlined" style={{ minWidth: '230px', margin: '20px', textAlign: 'left' }}>
       <CardContent>
         <Typography variant="h5" component="div">
           Account Number

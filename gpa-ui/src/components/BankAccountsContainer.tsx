@@ -1,4 +1,3 @@
-// BankAccountsContainer.tsx
 import React from 'react';
 import { Box } from '@mui/material';
 import BankAccountInfo from './BankAccountInfo';
