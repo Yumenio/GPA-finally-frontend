@@ -2,7 +2,9 @@ import React from 'react'
 
 const Home = ({token}:{token:string|null}) => {
   return (
-    <div>Home</div>
+    <div>
+        <h1>Welcome to GPA!</h1>
+    </div>
   )
 }
 
