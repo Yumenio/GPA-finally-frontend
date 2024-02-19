@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import useToken from './hooks/useToken';
+import Accounts from './pages/Accounts';
+import Transactions from './pages/Transactions';
 
 function App() {
   const{token, setToken} = useToken();
@@ -16,6 +18,8 @@ function App() {
         <Route path="/" element={<Home token={token}/>}/>
         <Route path="/login" element= {<Login setToken={setToken}/>}/>
         <Route path="/signup" element={<Register setToken={setToken}/>}/>
+        <Route path="/accounts" element={<Accounts/>}/>
+        <Route path="/transactions" element={<Transactions/>}/>
       </Routes>
     </div>
   );
