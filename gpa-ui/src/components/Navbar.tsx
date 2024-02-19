@@ -1,34 +1,33 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import './Navbar.css'
+import React, { Dispatch, SetStateAction } from 'react';
+import { AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({setToken, token}:{setToken:Dispatch<SetStateAction<string>>, token:string|null}) => {
   const navigate = useNavigate();
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     setToken('');
-    navigate("/");
-  }
-
-  useEffect(() => {}, [token])
+    navigate('/');
+  };
 
   return (
-    <div className="w-full sticky top-0 bg-white shadow-md z-50 mb-4">
-      <div className="h-20 flex flex-row items-center">
-        <div className=" mx-8 md:mx-auto flex w-full md:w-40 justify-between">
-          <Link to="/" style={{textDecoration: 'none', color: 'black', fontSize: '2.25rem', lineHeight: '2.25rem'}}>GPA</Link>
-          <div className="rounded border border-gray-300">
-            {!token || token == ''?(
-              <Link to="/login" className="text-black text-2xl p-1.5">Log In</Link>
-              ):(
-                <button onClick={handleLogout} className="text-black text-2xl p-1.5">Log out</button>
-            )}
-          </div>
-        </div>
-      </div>
-      <hr className="border-black"/>
-    </div>
-  )
-}
+    <AppBar position="sticky" color="default" elevation={4}>
+      <Toolbar style={{justifyContent:'space-between', width:'60%', margin:"0 auto"}}>
+        <Typography variant="h6">
+          GPA
+        </Typography>
+        {!token ? (
+          <Button color="inherit" onClick={() => navigate('/login')}>
+            Log In
+          </Button>
+        ) : (
+          <Button color="inherit" onClick={handleLogout}>
+            Log Out
+          </Button>
+        )}
+      </Toolbar>
+    </AppBar>
+  );
+};
 
-export default Navbar
+export default Navbar;
