@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import BankAccountInfo from '../components/BankAccountInfo'
 import axios from 'axios';
 import BankAccountsContainer from '../components/BankAccountsContainer';
+import { jwtDecode } from 'jwt-decode';
 
 export interface AccountData{
     ID: number,
@@ -9,22 +10,30 @@ export interface AccountData{
     current_balance:string,
 }
 
-const Accounts = () => {
+interface UserJwtPayload{
+    user_id:string
+}
+
+const Accounts = ({token}:{token:string|null}) => {
     const api_uri = "http://localhost:8000/api/accounts"
     const [data, setData] = useState<[AccountData]|null>();
 
-    const user_id = "6"
+    const secretKey = "django-insecure-l7jl&oths=+ytf+8nh4^5ko1bz&*f^)h1z%o8q@dx4d(0a*pwg"
 
-    const getData = () => {
-        axios(api_uri+"/user/"+user_id)
+    const getData = (userId:string) => {
+        axios(api_uri+"/user/"+userId)
         .then(response =>{
             setData(response.data)
         })
-        .catch(error =>console.log(error))
+        .catch(error =>console.error(error))
     }
 
     useEffect(() => {
-        getData();
+        if(token == null){
+            return;
+        }
+        const decoded:UserJwtPayload = jwtDecode(token);
+        getData(decoded.user_id);
     }, [])
   return (
     <div>

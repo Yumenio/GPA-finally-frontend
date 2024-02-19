@@ -20,7 +20,7 @@ const TransactionsPage: React.FC = () => {
     const getData = () => {
         axios(api_uri+"/account/"+accountId)
         .then(response => setData(response.data))
-        .catch(error => console.log(error))
+        .catch(error => console.error(error))
     }
     useEffect(()=>{
         getData();

@@ -5,7 +5,6 @@ import './Navbar.css'
 const Navbar = ({setToken, token}:{setToken:Dispatch<SetStateAction<string>>, token:string|null}) => {
   const navigate = useNavigate();
 
-  console.log('token',token)
   const handleLogout = () =>{
     setToken('');
     navigate("/");
