@@ -8,12 +8,13 @@ import Register from './pages/Register';
 import useToken from './hooks/useToken';
 import Accounts from './pages/Accounts';
 import Transactions from './pages/Transactions';
+import Navbar from './components/Navbar';
 
 function App() {
   const{token, setToken} = useToken();
   return (
     <div className="App">
-      Hola
+      <Navbar token={token} setToken={setToken}/>
       <Routes>
         <Route path="/" element={<Home token={token}/>}/>
         <Route path="/login" element= {<Login setToken={setToken}/>}/>
