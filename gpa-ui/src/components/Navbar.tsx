@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = ({setToken, token}:{setToken:Dispatch<SetStateAction<string>>, token:string|null}) => {
   const navigate = useNavigate();
@@ -14,7 +14,9 @@ const Navbar = ({setToken, token}:{setToken:Dispatch<SetStateAction<string>>, to
     <AppBar position="sticky" color="default" elevation={4}>
       <Toolbar style={{justifyContent:'space-between', width:'60%', margin:"0 auto"}}>
         <Typography variant="h6">
-          GPA
+          <Link to="/" style={{textDecoration:'none', color:'black'}}>
+            GPA
+          </Link>
         </Typography>
         {!token ? (
           <Button color="inherit" onClick={() => navigate('/login')}>
