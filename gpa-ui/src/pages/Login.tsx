@@ -24,12 +24,22 @@ async function login(credentials:{username:string, password:string}){
 const Login = ({setToken}:{setToken:Dispatch<SetStateAction<string>>}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [loginError, setLoginError] = useState<string | null>(null);
     const navigate = useNavigate();
 
     const handleLogin = async (e:React.FormEvent<HTMLButtonElement>) =>{
-        const userData = await login({username, password});
-        setToken(userData.token)
-        navigate("/accounts");
+        try{
+
+            const userData = await login({username, password});
+            if(userData && userData.token){
+                setToken(userData.token)
+                navigate("/accounts");
+            } else{
+                setLoginError("Login failed, invalid credentials.");
+            }
+        } catch(error){
+            setLoginError("Login failed, invalid credentials.");
+        }
     }
 
     const containerStyle = {
@@ -69,6 +79,11 @@ const Login = ({setToken}:{setToken:Dispatch<SetStateAction<string>>}) => {
             <Typography component="h1" variant="h5" style={{marginTop:'0.5rem'}}>
               Log In
             </Typography>
+            {loginError && (
+                <Typography variant="body2" color="error" style={{ textAlign: 'center', marginTop: '0.5rem' }}>
+                    {loginError}
+                </Typography>
+            )}
             <form style={formStyle} noValidate>
               <TextField
                 variant="outlined"
