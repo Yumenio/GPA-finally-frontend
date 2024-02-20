@@ -62,14 +62,13 @@ const Login = ({setToken}:{setToken:Dispatch<SetStateAction<string>>}) => {
     
       const submitButtonStyle = {
         margin: '24px 0 16px',
-        // Add some appealing styles to the button
-        background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+        background: 'linear-gradient(45deg, #4CAF50 30%, #4CAF50 90%)',
         borderRadius: 3,
         border: 0,
         color: 'white',
         height: 48,
         padding: '0 30px',
-        boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)',
+        boxShadow: '0 3px 5px 2px rgba(76, 175, 80, 0.3)',
       };
     
     
@@ -119,9 +118,14 @@ const Login = ({setToken}:{setToken:Dispatch<SetStateAction<string>>}) => {
                 style={submitButtonStyle}
                 onClick={(e) => handleLogin(e)}
               >
-                Login
+                Log In
               </Button>
             </form>
+            <Link to="/signup" style={{ textAlign: 'center', marginTop: '1rem' }}>
+              <p style={{marginBottom:'1rem'}}>
+                Don't have an account? Sign up!
+              </p>
+            </Link>
           </Paper>
         </Container>
       );
