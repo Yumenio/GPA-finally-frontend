@@ -8,8 +8,14 @@ interface TransactionRowProps {
 }
 
 const TransactionRow: React.FC<TransactionRowProps> = ({ transaction }) => {
+    const getBackgroundColor = () => {
+        const bgColor = transaction.transaction_type === "CREDIT"? {backgroundColor: "#FFCCCC"}:{backgroundColor:"#CFFFCC"}
+        return bgColor;
+    }
+    const fixedAmount = transaction.transaction_type === "CREDIT"? -transaction.amount : transaction.amount;
+    const formattedAmount = parseFloat(fixedAmount.toString()).toFixed(2);
     return (
-      <TableRow>
+      <TableRow style={getBackgroundColor()}>
         <TableCell>{transaction.ID}</TableCell>
         <TableCell>{transaction.date}</TableCell>
         <TableCell>{transaction.transaction_type}</TableCell>
