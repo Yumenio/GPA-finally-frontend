@@ -19,7 +19,11 @@ const Accounts = ({token}:{token:string|null}) => {
     const [data, setData] = useState<[AccountData]|null>();
 
     const getData = (userId:string) => {
-        axios(api_uri+"/user/"+userId)
+        axios(api_uri+"/user/"+userId, {
+            headers:{
+                "Authorization":`Bearer ${token}`
+            }
+        })
         .then(response =>{
             setData(response.data)
         })

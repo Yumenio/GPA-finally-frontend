@@ -12,13 +12,17 @@ export interface TransactionData{
     amount:number;
 }
 
-const TransactionsPage: React.FC = () => {
+const Transactions = ({token}:{token:string|null}) => {
   const { accountId } = useParams<{ accountId: string }>();
   const [data, setData] = useState<[TransactionData]|null>();
   const api_uri = "http://localhost:8000/api/transactions"
 
     const getData = () => {
-        axios(api_uri+"/account/"+accountId)
+        axios(api_uri+"/account/"+accountId, {
+            headers:{
+                "Authorization":`Bearer ${token}`
+            }
+        })
         .then(response => setData(response.data))
         .catch(error => console.error(error))
     }
@@ -52,4 +56,4 @@ const TransactionsPage: React.FC = () => {
       );
     };
 
-export default TransactionsPage;
+export default Transactions;
